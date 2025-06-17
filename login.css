@@ -1,0 +1,717 @@
+/* Import Montserrat font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables for consistency */
+:root {
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #e9ecef;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --primary-color: #b49770;
+  --border-color: #dee2e6;
+}
+
+/* Reset default styles and set font-family to Montserrat */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Styling for the body */
+body {
+  background-color: #b4977f60;
+  background: linear-gradient(to right, #b4977f6e, #0000002e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Styling for the main container */
+.container {
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
+}
+
+/* Styling for paragraphs within the container */
+.container p {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  margin: 20px 0;
+}
+
+/* Styling for spans within the container */
+.container span {
+  font-size: 12px;
+}
+
+/* Styling for links within the container */
+.container a {
+  color: #333;
+  font-size: 13px;
+  text-decoration: none;
+  margin: 15px 0 10px;
+  display: inline-block;
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
+
+/* Styling for buttons within the container */
+.container button {
+  background-color: #000000;
+  color: #fff;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.container button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Styling for hidden buttons within the container */
+.container button.hidden {
+  background-color: transparent;
+  border-color: #fff;
+  color: #fff;
+}
+
+/* Styling for forms within the container */
+.container form {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  height: 100%;
+}
+
+/* Styling for input fields within the container */
+.container input {
+  background-color: #eee;
+  border: none;
+  margin: 8px 0;
+  padding: 10px 15px;
+  font-size: 13px;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.container input:focus {
+  background-color: #ddd;
+}
+
+/* Styling for the form container */
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+/* Styling for sign-up container */
+.sign-up-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+/* Styling for sign-in container */
+.sign-in-container {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Styling when right panel is active */
+.container.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+}
+
+.container.right-panel-active .sign-in-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: move 0.6s;
+}
+
+.container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+/* Keyframes for animation */
+@keyframes move {
+  0%, 49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%, 100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+/* Styling for social icons */
+.social-icons {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Styling for individual icons */
+.icon {
+  margin: 0 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  color: var(--text-secondary);
+}
+
+.icon:hover {
+  transform: translateY(-5px);
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Styling for overlay container */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  border-radius: 150px 0 0 100px;
+  z-index: 1000;
+}
+
+/* Styling when right panel is active for overlay container */
+.container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+  border-radius: 0 150px 100px 0;
+}
+
+/* Styling for overlay */
+.overlay {
+  background-color: #ffffff;
+  height: 100%;
+  background: linear-gradient(to right, #b0715470, #5134249f);
+  color: #fff;
+  position: relative;
+  left: -100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: left 0.6s ease-in-out;
+}
+
+/* Styling when right panel is active for overlay */
+.container.right-panel-active .overlay {
+  left: 0;
+}
+
+/* Styling for overlay panels */
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+/* Styling for left overlay panel */
+.overlay-left {
+  transform: translateX(-20%);
+}
+
+/* Styling when right panel is active for left overlay panel */
+.container.right-panel-active .overlay-left {
+  transform: translateX(0);
+}
+
+/* Styling for right overlay panel */
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+/* Styling when right panel is active for right overlay panel */
+.container.right-panel-active .overlay-right {
+  transform: translateX(20%);
+}
+
+/* Footer styles */
+.footer {
+  margin-top: 60px;
+  padding: 40px 0;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-section h5 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: var(--text-primary);
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 8px;
+}
+
+.footer-section a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: var(--primary-color);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.payment-methods {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.payment-methods img {
+  height: 30px;
+  border-radius: 4px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    min-height: 600px;
+  }
+  
+  .sign-up-container,
+  .sign-in-container {
+    width: 100%;
+  }
+  
+  .overlay-container {
+    display: none;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+/* Enhanced Authentication System Styles - Non-intrusive additions only */
+
+/* Loading state for forms */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Message Styles - only if not already styled */
+.error-message,
+.success-message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.error-message {
+    background-color: #ffe6e6;
+    color: #d32f2f;
+    border: 1px solid #ffcdd2;
+}
+
+.success-message {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+/* Enhanced red-text to ensure it's visible */
+.red-text {
+    color: #d32f2f;
+    font-size: 12px;
+    margin-top: 2px;
+    min-height: 16px;
+}
+
+/* Input Group - minimal styling to preserve your design */
+.input-group {
+    position: relative;
+}
+
+/* Password Toggle - positioned absolutely to not affect layout */
+.input-group .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    user-select: none;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 5px;
+}
+
+.input-group .toggle-password:hover {
+    color: #333;
+}
+
+/* Loading Spinner */
+.button-spinner {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to { 
+        transform: rotate(360deg); 
+    }
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    margin-top: 5px;
+    font-size: 12px;
+    text-align: left;
+}
+
+.strength-weak { 
+    color: #d32f2f; 
+}
+
+.strength-medium { 
+    color: #f57c00; 
+}
+
+.strength-strong { 
+    color: #388e3c; 
+}
+
+/* Disabled button state */
+button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Accessibility - only for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .button-spinner {
+        animation: none;
+    }
+}
+/* Minimal spacing between form inputs */
+.form-container input {
+    margin-bottom: 3px; /* Very tight spacing */
+}
+
+.password-container {
+    margin-bottom: 3px;
+}
+
+/* Minimal spacing for error messages */
+.red-text {
+    color: #dc3545;
+    font-size: 14px;
+    margin-bottom: 5px; /* Minimal bottom margin */
+    margin-top: 1px; /* Minimal top margin */
+    display: block;
+    line-height: 1.2; /* Tighter line height */
+}
+
+/* Minimal spacing for password strength indicator */
+.password-strength {
+    margin-bottom: 5px;
+    margin-top: 1px;
+    font-size: 12px;
+}
+
+/* Container for password input and eye icon */
+.password-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Ensure password inputs inherit all the same styles as regular inputs */
+.password-container input {
+    padding-right: 45px !important; /* Only override right padding for eye icon space */
+}
+
+/* Position the eye icon inside the input */
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 18px;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+    color: #007bff;
+}
+
+/* Make sure the icon doesn't interfere with input */
+.toggle-password i {
+    pointer-events: none;
+}
+/* Enhanced Authentication System Styles - Non-intrusive additions only */
+
+/* Loading state for forms */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Message Styles - only if not already styled */
+.error-message,
+.success-message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.error-message {
+    background-color: #ffe6e6;
+    color: #d32f2f;
+    border: 1px solid #ffcdd2;
+}
+
+.success-message {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+/* Enhanced red-text to ensure it's visible */
+.red-text {
+    color: #d32f2f;
+    font-size: 12px;
+    margin-top: 2px;
+    min-height: 16px;
+}
+
+/* Input Group - minimal styling to preserve your design */
+.input-group {
+    position: relative;
+}
+
+/* Password Toggle - positioned absolutely to not affect layout */
+.input-group .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    user-select: none;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 5px;
+}
+
+.input-group .toggle-password:hover {
+    color: #333;
+}
+
+/* Loading Spinner */
+.button-spinner {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to { 
+        transform: rotate(360deg); 
+    }
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    margin-top: 5px;
+    font-size: 12px;
+    text-align: left;
+}
+
+.strength-weak { 
+    color: #d32f2f; 
+}
+
+.strength-medium { 
+    color: #f57c00; 
+}
+
+.strength-strong { 
+    color: #388e3c; 
+}
+
+/* Disabled button state */
+button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Accessibility - only for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .button-spinner {
+        animation: none;
+    }
+}
+/* Welcome Message Styles */
+#welcomeMessage {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    animation: slideInRight 0.5s ease-in-out;
+}
+
+.colored-square {
+    background-color: #C5AB96 !important;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    min-width: 250px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.colored-square div {
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Animation for welcome message */
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    #welcomeMessage {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+    }
+    
+    .colored-square {
+        min-width: auto;
+        width: 100%;
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+}

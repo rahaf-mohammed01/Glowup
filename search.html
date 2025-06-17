@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GlowUp-Clothes Women</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #b07154;
+            --secondary-color: #6c757d;
+            --text-dark: #2c2c2c;
+            --text-light: #6c757d;
+            --bg-white: #ffffff;
+            --border-light: #e9ecef;
+            --shadow-light: 0 2px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 4px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 120px; /* Account for fixed navbar */
+        }
+
+        /* Enhanced Search Container */
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.7rem 1rem 0.7rem 2.5rem;
+            border: 2px solid var(--border-light);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(176, 113, 84, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            box-shadow: var(--shadow-hover);
+            z-index: 1000;
+            max-height: 400px;
+            overflow-y: auto;
+            opacity: 0;
+            transform: translateY(-10px);
+            visibility: hidden;
+            transition: all 0.3s ease;
+            margin-top: 5px;
+        }
+
+        .search-results.show {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .search-result-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #f8f9fa;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-result-item:hover {
+            background: #f8f9fa;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-image {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .search-result-content {
+            flex: 1;
+        }
+
+        .search-result-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 2px;
+            font-size: 14px;
+        }
+
+        .search-result-description {
+            color: #666;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-highlight {
+            background: #fff3cd;
+            color: #856404;
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Navbar Styles */
+        .navbar-custom {
+            background: var(--bg-white);
+            box-shadow: var(--shadow-light);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-style: italic;
+            letter-spacing: -0.5px;
+            transition: transform 0.2s ease;
+        }
+
+        .navbar-brand:hover {
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+            background: rgba(176, 113, 84, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .nav-link i {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .wishlist-link {
+            color: var(--primary-color) !important;
+            font-weight: 600;
+        }
+
+        .wishlist-counter, .shopping-bag-counter {
+            position: absolute;
+            top: 0.3rem;
+            right: 0.5rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        /* Category Filter Buttons */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--primary-color);
+            background: white;
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Results counter */
+        .results-counter {
+            text-align: center;
+            margin: 20px 0;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Product Cards */
+        .product-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-card.highlighted {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 20px rgba(176, 113, 84, 0.3);
+        }
+
+        .product-card.hidden {
+            display: none;
+        }
+
+        .shoe-details img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .shoe-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .shoe-details p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .color-size-price {
+            margin-bottom: 20px;
+        }
+
+        .color-option, .size-option {
+            margin-bottom: 15px;
+        }
+
+        .color, .size {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .circles {
+            display: flex;
+            gap: 8px;
+        }
+
+        .circle {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .circle.beige { background: #f5f5dc; }
+        .circle.black { background: #333; }
+        .circle.brown { background: #8b4513; }
+
+        .circle.active {
+            border-color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .sizes {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .size-option {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .size-option:hover {
+            border-color: var(--primary-color);
+            background: #f8f9ff;
+        }
+
+        .price_num {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .add-to-bag {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--primary-color), #8b5a3c);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-bag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(176, 113, 84, 0.4);
+        }
+
+        .wishlist-heart {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .wishlist-heart:hover {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .wishlist-heart.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Chat Button */
+        .simple-chat-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            box-shadow: var(--shadow-hover);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .simple-chat-btn:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        .chat-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Back to top button */
+        .c-footer {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+
+        #backtotop {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #backtotop:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .navbar-nav {
+                display: none;
+            }
+            
+            .navbar-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .search-container {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-cards-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                padding: 15px;
+            }
+            
+            .filter-container {
+                padding: 0 15px;
+            }
+            
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <h4><em>GlowUp</em></h4>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.php" aria-label="Home">
+                                <i class="fas fa-home"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="Women.php" aria-label="Women's Collection">
+                                <i class="fas fa-female"></i>
+                                <span>Women</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Men.php" aria-label="Men's Collection">
+                                <i class="fas fa-male"></i>
+                                <span>Men</span>
+                            </a>
+                        </li>
+                        <li class="nav-item position-relative">
+                            <a class="nav-link wishlist-link" href="Wishlist.php" aria-label="Wishlist">
+                                <i class="bx bx-heart"></i>
+                                <span>Wishlist</span>
+                                <span class="wishlist-counter" id="wishlistCounter">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item position-relative">
+                            <a class="nav-link" href="ShoppingBag.php" aria-label="Shopping Bag">
+                                <i class="fas fa-shopping-bag"></i>
+                                <span>Shopping Bag</span>
+                                <span class="shopping-bag-counter" id="bagCounter" style="display: none;">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Account.php" aria-label="My Account">
+                                <i class="fas fa-user"></i>
+                                <span>Account</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Enhanced Search Bar -->
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon" onclick="performSearch()"></i>
+                        <input id="searchInput" class="search-input" type="search" placeholder="Search products..." aria-label="Search">
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Category Filter Buttons -->
+    <div class="filter-container">
+        <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+        <button class="filter-btn" onclick="filterProducts('dress')">Dresses</button>
+        <button class="filter-btn" onclick="filterProducts('top')">Tops</button>
+        <button class="filter-btn" onclick="filterProducts('jacket')">Jackets</button>
+        <button class="filter-btn" onclick="filterProducts('sweater')">Sweaters</button>
+    </div>
+
+    <!-- Results Counter -->
+    <div id="resultsCounter" class="results-counter"></div>
+
+    <!-- Sample Products - Replace with your PHP loop -->
+    <div id="productGrid" class="product-cards-container">
+        <!-- Sample product 1 -->
+        <div class="product-card" data-category="women dress" data-name="Elegant Summer Dress" data-description="Beautiful summer dress perfect for any occasion" data-price="299.99">
+            <div class="shoe-details">
+                <img src="https://rino-pelle.com/cdn/shop/files/Bubbly.5002411_Eggplant_01.jpg?v=1722499773" alt="Elegant Summer Dress">
+                <span class="shoe-name">Elegant Summer Dress</span>
+                <p>Beautiful summer dress perfect for any occasion. Made from high-quality materials with a comfortable fit.</p>
+            </div>
+            <div class="color-size-price">
+                <div class="color-option">
+                    <span class="color">Color:</span>
+                    <div class="circles">
+                        <span class="circle beige active"></span>
+                        <span class="circle black"></span>
+                        <span class="circle brown"></span>
+                    </div>
+                </div>
+                <div class="size-option">
+                    <span class="size">Size:</span>
+                    <div class="sizes">
+                        <span class="size-option">XS</span>
+                        <span class="size-option">S</span>
+                        <span class="size-option">M</span>
+                        <span class="size-option">L</span>
+                        <span class="size-option">XL</span>
+                    </div>
+                </div>
+                <div class="price">
+                    <span class="price_num">SAR 299.99</span>
+                </div>
+            </div>
+            <div class="button">
+                <button class="add-to-bag" data-product-id="1">Add to Bag</button>
+            </div>
+            <button class="wishlist-heart" data-product-id="1" onclick="toggleWishlist(this)">
+                <i class="bx bx-heart"></i>
+            </button>
+        </div>
+
+        <!-- Sample product 2 -->
+        <div class="product-card" data-category="women top" data-name="Casual Blouse" data-description="Comfortable and stylish blouse for everyday wear" data-price="199.99">
+            <div class="shoe-details">
+                <img src="https://rino-pelle.com/cdn/shop/files/Elda.5002411_Stone_01.jpg?v=1722349132" alt="Casual Blouse">
+                <span class="shoe-name">Casual Blouse</span>
+                <p>Comfortable and stylish blouse for everyday wear. Perfect for both casual and professional settings.</p>
+            </div>
+            <div class="color-size-price">
+                <div class="color-option">
+                    <span class="color">Color:</span>
+                    <div class="circles">
+                        <span class="circle beige active"></span>
+                        <span class="circle black"></span>
+                        <span class="circle brown"></span>
+                    </div>
+                </div>
+                <div class="size-option">
+                    <span class="size">Size:</span>
+                    <div class="sizes">
+                        <span class="size-option">XS</span>
+                        <span class="size-option">S</span>
+                        <span class="size-option">M</span>
+                        <span class="size-option">L</span>
+                        <span class="size-option">XL</span>
+                    </div>
+                </div>
+                <div class="price">
+                    <span class="price_num">SAR 199.99</span>
+                </div>
+            </div>
+            <div class="button">
+                <button class="add-to-bag" data-product-id="2">Add to Bag</button>
+            </div>
+            <button class="wishlist-heart" data-product-id="2" onclick="toggleWishlist(this)">
+                <i class="bx bx-heart"></i>
+            </button>
+        </div>
+
+        <!-- Sample product 3 -->
+        <div class="product-card" data-category="women sweater" data-name="Cozy Sweater" data-description="Warm and cozy sweater for cold days" data-price="349.99">
+            <div class="shoe-details">
+                <img src="https://rino-pelle.com/cdn/shop/files/Dinty.5002411_Eggplant_01_152c596b-c11c-4841-8cb8-e4a02f331cf8.jpg?v=1736798467" alt="Cozy Sweater">
+                <span class="shoe-name">Cozy Sweater</span>
+                <p>Warm and cozy sweater for cold days. Made from soft materials that feel great against your skin.</p>
+            </div>
+            <div class="color-size-price">
+                <div class="color-option">
+                    <span class="color">Color:</span>
+                    <div class="circles">
+                        <span class="circle beige active"></span>
+                        <span class="circle black"></span>
+                        <span class="circle brown"></span>
+                    </div>
+                </div>
+                <div class="size-option">
+                    <span class="size">Size:</span>
+                    <div class="sizes">
+                        <span class="size-option">XS</span>
+                        <span class="size-option">S</span>
+                        <span class="size-option">M</span>
+                        <span class="size-option">L</span>
+                        <span class="size-option">XL</span>
+                    </div>
+                </div>
+                <div class="price">
+                    <span class="price_num">SAR 349.99</span>
+                </div>
+            </div>
+            <div class="button">
+                <button class="add-to-bag" data-product-id="3">Add to Bag</button>
+            </div>
+            <button class="wishlist-heart" data-product-id="3" onclick="toggleWishlist(this)">
+                <i class="bx bx-heart"></i>
+            </button>
+        </div>
+
+        <!-- Sample product 4 -->
+        <div class="product-card" data-category="women jacket" data-name="Stylish Jacket" data-description="Perfect jacket for any season" data-price="399.99">
+            <div class="shoe-details">
+                <img src="https://rino-pelle.com/cdn/shop/files/Nusa.7002412_hunter_01.jpg?v=1724400803" alt="Stylish Jacket">
+                <span class="shoe-name">Stylish Jacket</span>
+                <p>Perfect jacket for any season. Combines style and functionality in one beautiful piece.</p>
+            </div>
+            <div class="color-size-price">
+                <div class="color-option">
+                    <span class="color">Color:</span>
+                    <div class="circles">
+                        <span class="circle beige active"></span>
+                        <span class="circle black"></span>
+                        <span class="circle brown"></span>
+                    </div>
+                </div>
+                <div class="size-option">
+                    <span class="size">Size:</span>
+                    <div class="sizes">
+                        <span class="size-option">XS</span>
+                        <span class="size-option">S</span>
+                        <span class="size-option">M</span>
+                        <span class="size-option">L</span>
+                        <span class="size-option">XL</span>
+                    </div>
+                </div>
+                <div class="price">
+                    <span class="price_num">SAR 399.99</span>
+                </div>
+            </div>
+            <div class="button">
+                <button class="add-to-bag" data-product-id="4">Add to Bag</button>
+            </div>
+            <button class="wishlist-heart" data-product-id="4" onclick="toggleWishlist(this)">
+                <i class="bx bx-heart"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Back to top button -->
+    <div class="c-footer" title="back to top">
+        <button type="button" id="backtotop" onclick="scrollToTop()">&#8593;</button>
+    </div>
+
+    <!-- Chat Button -->
+    <a href="chat.php" class="simple-chat-btn" target="_top" title="Chat with Fashion Assistant">
+        <i class="fas fa-comments"></i>
+        <span class="chat-badge">!</span>
+    </a>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Dynamic product detection and search functionality
+        let products = [];
+        let currentFilter = 'all';
+        let searchTimeout;
+
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const productGrid = document.getElementById('productGrid');
+        const resultsCounter = document.getElementById('resultsCounter');
+
+        // Initialize products from current page
+        function extractProductsFromPage() {
+            const productElements = document.querySelectorAll('.product-card');
+            
+            return Array.from(productElements).map((element, index) => {
+                const titleEl = element.querySelector('.shoe-name');
+                const descEl = element.querySelector('.shoe-details p');
+                const priceEl = element.querySelector('.price_num');
+                const imgEl = element.querySelector('.shoe-details img');
+                const category = element.getAttribute('data-category') || '';
+                
+           return {
+                    id: index,
+                    title: titleEl ? titleEl.textContent.trim() : '',
+                    description: descEl ? descEl.textContent.trim() : '',
+                    price: priceEl ? priceEl.textContent.trim() : '',
+                    image: imgEl ? imgEl.src : '',
+                    category: category,
+                    element: element
+                };
+            });
+        }
+
+        // Initialize products on page load
+        function initializeProducts() {
+            products = extractProductsFromPage();
+            updateResultsCounter();
+        }
+
+        // Search functionality
+        function searchProducts(query) {
+            if (!query.trim()) {
+                return products;
+            }
+
+            const searchTerm = query.toLowerCase();
+            return products.filter(product => {
+                return product.title.toLowerCase().includes(searchTerm) ||
+                       product.description.toLowerCase().includes(searchTerm) ||
+                       product.category.toLowerCase().includes(searchTerm);
+            });
+        }
+
+        // Highlight search terms in text
+        function highlightSearchTerm(text, searchTerm) {
+            if (!searchTerm.trim()) return text;
+            
+            const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            return text.replace(regex, '<span class="search-highlight">$1</span>');
+        }
+
+        // Display search results dropdown
+        function displaySearchResults(results, searchTerm) {
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="no-results">No products found</div>';
+            } else {
+                const resultsHTML = results.slice(0, 8).map(product => `
+                    <div class="search-result-item" onclick="selectProduct(${product.id})">
+                        <img src="${product.image}" alt="${product.title}" class="search-result-image">
+                        <div class="search-result-content">
+                            <div class="search-result-title">${highlightSearchTerm(product.title, searchTerm)}</div>
+                            <div class="search-result-description">
+                                <span>${highlightSearchTerm(product.description.substring(0, 50), searchTerm)}...</span>
+                                <span>${product.price}</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                searchResults.innerHTML = resultsHTML;
+            }
+            
+            searchResults.classList.add('show');
+        }
+
+        // Select product from search results
+        function selectProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                // Hide search results
+                searchResults.classList.remove('show');
+                searchInput.value = product.title;
+                
+                // Highlight the selected product
+                document.querySelectorAll('.product-card').forEach(card => {
+                    card.classList.remove('highlighted');
+                });
+                product.element.classList.add('highlighted');
+                
+                // Scroll to the product
+                product.element.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+                
+                // Clear search input after a delay
+                setTimeout(() => {
+                    searchInput.value = '';
+                    product.element.classList.remove('highlighted');
+                }, 3000);
+            }
+        }
+
+        // Perform search and filter products
+        function performSearch() {
+            const query = searchInput.value.trim();
+            if (!query) {
+                showAllProducts();
+                updateResultsCounter();
+                return;
+            }
+
+            const results = searchProducts(query);
+            
+            // Hide all products first
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.classList.add('hidden');
+            });
+            
+            // Show matching products
+            results.forEach(product => {
+                product.element.classList.remove('hidden');
+            });
+            
+            updateResultsCounter(results.length);
+            searchResults.classList.remove('show');
+        }
+
+        // Filter products by category
+        function filterProducts(category) {
+            currentFilter = category;
+            
+            // Update active filter button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Show/hide products based on category
+            const productCards = document.querySelectorAll('.product-card');
+            let visibleCount = 0;
+            
+            productCards.forEach(card => {
+                const productCategory = card.getAttribute('data-category') || '';
+                
+                if (category === 'all' || productCategory.includes(category)) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            updateResultsCounter(visibleCount);
+            
+            // Clear search
+            searchInput.value = '';
+            searchResults.classList.remove('show');
+        }
+
+        // Show all products
+        function showAllProducts() {
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.classList.remove('hidden');
+            });
+        }
+
+        // Update results counter
+        function updateResultsCounter(count = null) {
+            const visibleProducts = count !== null ? count : 
+                document.querySelectorAll('.product-card:not(.hidden)').length;
+            
+            resultsCounter.textContent = `Showing ${visibleProducts} product${visibleProducts !== 1 ? 's' : ''}`;
+        }
+
+        // Real-time search as user types
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim();
+            
+            // Clear previous timeout
+            clearTimeout(searchTimeout);
+            
+            if (query.length === 0) {
+                searchResults.classList.remove('show');
+                showAllProducts();
+                updateResultsCounter();
+                return;
+            }
+            
+            if (query.length < 2) {
+                searchResults.classList.remove('show');
+                return;
+            }
+            
+            // Debounce search
+            searchTimeout = setTimeout(() => {
+                const results = searchProducts(query);
+                displaySearchResults(results, query);
+            }, 300);
+        });
+
+        // Handle search on Enter key
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch();
+            }
+        });
+
+        // Hide search results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-container')) {
+                searchResults.classList.remove('show');
+            }
+        });
+
+        // Color selection functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('circle')) {
+                // Remove active class from siblings
+                e.target.parentNode.querySelectorAll('.circle').forEach(circle => {
+                    circle.classList.remove('active');
+                });
+                // Add active class to clicked circle
+                e.target.classList.add('active');
+            }
+        });
+
+        // Size selection functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('size-option')) {
+                // Remove active class from siblings
+                e.target.parentNode.querySelectorAll('.size-option').forEach(size => {
+                    size.classList.remove('active');
+                });
+                // Add active class to clicked size
+                e.target.classList.add('active');
+            }
+        });
+
+        // Add to bag functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('add-to-bag')) {
+                const button = e.target;
+                const originalText = button.textContent;
+                
+                // Visual feedback
+                button.textContent = 'Added!';
+                button.style.background = '#28a745';
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                }, 2000);
+            }
+        });
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeProducts();
+            
+            // Add some animation delays to product cards
+            document.querySelectorAll('.product-card').forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Add CSS animation for product cards entrance
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .product-card {
+                animation: fadeInUp 0.6s ease forwards;
+                opacity: 0;
+            }
+        `;
+        document.head.appendChild(style);
+        </script>
+        </html>

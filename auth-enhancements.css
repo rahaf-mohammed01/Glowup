@@ -1,0 +1,112 @@
+/* Enhanced Authentication System Styles - Non-intrusive additions only */
+
+/* Loading state for forms */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Message Styles - only if not already styled */
+.error-message,
+.success-message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.error-message {
+    background-color: #ffe6e6;
+    color: #d32f2f;
+    border: 1px solid #ffcdd2;
+}
+
+.success-message {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+/* Enhanced red-text to ensure it's visible */
+.red-text {
+    color: #d32f2f;
+    font-size: 12px;
+    margin-top: 2px;
+    min-height: 16px;
+}
+
+/* Input Group - minimal styling to preserve your design */
+.input-group {
+    position: relative;
+}
+
+/* Password Toggle - positioned absolutely to not affect layout */
+.input-group .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    user-select: none;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 5px;
+}
+
+.input-group .toggle-password:hover {
+    color: #333;
+}
+
+/* Loading Spinner */
+.button-spinner {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to { 
+        transform: rotate(360deg); 
+    }
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    margin-top: 5px;
+    font-size: 12px;
+    text-align: left;
+}
+
+.strength-weak { 
+    color: #d32f2f; 
+}
+
+.strength-medium { 
+    color: #f57c00; 
+}
+
+.strength-strong { 
+    color: #388e3c; 
+}
+
+/* Disabled button state */
+button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Accessibility - only for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .button-spinner {
+        animation: none;
+    }
+}
