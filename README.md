@@ -14,25 +14,11 @@ Users can browse fashion products, view product information, manage their shoppi
 
 ## 📸 Project Preview
 
-> Add 3–5 screenshots or a short GIF here.
-
-### Home Page
-
-![GlowUp Home Page](screenshots/home.png)
-
-### Product Experience
-
-![GlowUp Products](screenshots/products.png)
-
-### Shopping Bag
-
-![GlowUp Shopping Bag](screenshots/shopping-bag.png)
-
-### Admin / Supplier Interface
-
-![GlowUp Admin](screenshots/admin.png)
-
----
+<p align="center">
+  <img src="screenshots/glowup-homepage.png" 
+       alt="GlowUp E-Commerce Website" 
+       width="900">
+</p>
 
 ## 🚀 Key Features
 
