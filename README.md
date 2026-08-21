@@ -20,9 +20,9 @@ Users can browse fashion products, view product information, manage their shoppi
        width="900">
 </p>
 
-## 🚀 Key Features
+## Key Features
 
-### 🛍️ Shopping Experience
+### Shopping Experience
 
 * Browse men's and women's fashion products
 * View individual product details
@@ -32,7 +32,7 @@ Users can browse fashion products, view product information, manage their shoppi
 * Checkout workflow
 * Order management
 
-### 👤 User Account
+### User Account
 
 * User login and logout
 * Account management
@@ -40,13 +40,13 @@ Users can browse fashion products, view product information, manage their shoppi
 * Password recovery interface
 * Authentication middleware
 
-### 🧑‍💼 Administration
+### Administration
 
 * Administrative interface
 * Supplier functionality
 * Product-related management features
 
-### 💬 User Experience
+###  User Experience
 
 * Responsive web interface
 * Interactive JavaScript components
@@ -55,7 +55,7 @@ Users can browse fashion products, view product information, manage their shoppi
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer        | Technologies            |
 | ------------ | ----------------------- |
@@ -67,31 +67,10 @@ Users can browse fashion products, view product information, manage their shoppi
 
 ---
 
-## 🏗️ Application Structure
-
-```text
-User
- │
- ▼
-Frontend Interface
-HTML • CSS • JavaScript
- │
- ▼
-PHP Application Layer
- │
- ├── Authentication
- ├── Products
- ├── Shopping Bag
- ├── Wishlist
- ├── Checkout
- ├── Orders
- ├── User Account
- └── Admin / Supplier
-```
 
 ---
 
-## 💡 What I Learned
+## What I Learned
 
 Building GlowUp provided hands-on experience with:
 
@@ -106,7 +85,7 @@ Building GlowUp provided hands-on experience with:
 
 ---
 
-## 📂 Main Modules
+## Main Modules
 
 ```text
 GlowUp
@@ -142,16 +121,10 @@ GlowUp
 
 ---
 
-## 🎯 Project Purpose
+##  Project Purpose
 
 GlowUp was developed as a practical full-stack web development project to apply concepts including responsive UI development, server-side programming, authentication, e-commerce workflows, and modular application development.
 
 ---
 
-## 👩‍💻 Developer
 
-**Rahaf Mohammed**
-
-Computer Science Student
-
-[GitHub](https://github.com/rahaf-mohammed01)
