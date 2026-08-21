@@ -15,7 +15,7 @@ Users can browse fashion products, view product information, manage their shoppi
 ## 📸 Project Preview
 
 <p align="center">
-  <img src="screenshots/glowup-homepage.png" 
+  <img src="Screenshot 2026-08-21 163304.png" 
        alt="GlowUp E-Commerce Website" 
        width="900">
 </p>
